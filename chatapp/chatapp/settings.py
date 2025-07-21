@@ -55,7 +55,6 @@ ROOT_URLCONF = 'chatapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # Add your templates directory here
         'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
