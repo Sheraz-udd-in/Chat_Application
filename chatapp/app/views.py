@@ -52,6 +52,7 @@ def loginView(request):
     return render(request, 'login.html')
 
 
+
 def logoutView(request):
     logout(request)
     return redirect('login')
