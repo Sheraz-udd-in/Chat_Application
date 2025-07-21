@@ -1,10 +1,13 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path,include
-from . import views 
+from app.views import *
 
 urlpatterns = [
-    
+    path('', indexView, name='index'),
+    path('login/', loginView, name='login'),
+    path('logout/', logoutView, name='logout'),
+    path('register/', register, name='register'),
 ]
 
 if settings.DEBUG:

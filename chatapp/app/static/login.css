@@ -1,91 +1,39 @@
- * {
-    box-sizing: border-box;
-  }
+body {
+  background: linear-gradient(to right, #c6f68d, #a1f4b3);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #d4fc79, #96e6a1);
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+/* Login Card */
+.card {
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  background: white;
+  padding: 2rem;
+  animation: fadeIn 0.6s ease-in-out;
+}
 
-  .login-container {
-    background: white;
-    padding: 40px 30px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    max-width: 400px;
-    transition: all 0.3s ease-in-out;
-  }
+/* Custom button */
+.btn-custom {
+  background-color: #3f51b5;
+  color: white;
+  font-weight: 500;
+  border: none;
+  transition: 0.3s ease;
+}
 
-  .login-container:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-  }
+.btn-custom:hover {
+  background-color: #303f9f;
+}
 
-  .login-container h2 {
-    text-align: center;
-    margin-bottom: 25px;
-    color: #333;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-
-  .login-container label {
-    display: block;
-    margin: 10px 0 5px;
-    color: #444;
-    font-weight: 600;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-
-  .login-container input[type="text"],
-  .login-container input[type="password"] {
-    width: 100%;
-    padding: 12px 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 14px;
-    transition: border 0.2s ease-in-out;
-  }
-
-  .login-container input:focus {
-    border-color: #00c896;
-    outline: none;
-  }
-
-  .login-container button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 20px;
-    border: none;
-    border-radius: 8px;
-    background-color: #00c896;
-    color: rgb(165, 76, 76);
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.2s ease-in-out;
-  }
-
-  .login-container button:hover {
-    background-color: #00ac84;
-  }
-
-  .login-container p {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 14px;
-  }
-
-  .login-container a {
-    color: #00ac84;
-    text-decoration: none;
-    font-weight: 600;
-  }
-
-  .login-container a:hover {
-    text-decoration: underline;
-  }
+}
