@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-=!fd_sj-!8qls!l2h@!cq8))zz9a9d3trg=f++i=jk9pk50j(e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [*]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -37,9 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
     'app',
 ]
-
+# Channels configuration
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -68,17 +74,20 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'chatapp.wsgi.application'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+LOGIN_URL = '/login/'  # matches the name in your url pattern
 
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
@@ -111,7 +120,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-LOGIN_URL = 'login'  # matches the name in your url pattern
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
@@ -119,8 +127,8 @@ LOGIN_URL = 'login'  # matches the name in your url pattern
 import os
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'app', 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -128,7 +136,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 AUTH_USER_MODEL = 'app.CustomUser' 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
 
 
