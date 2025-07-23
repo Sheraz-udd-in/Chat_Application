@@ -3,10 +3,11 @@ import json
 from channels.db import database_sync_to_async
 from channels.generic.websocket import AsyncWebsocketConsumer
 
-
+print("WebSocket connection established")
 # ws://localhost:8000/ws/chat/123/ → room_id = 123
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
+       
         self.room_id = self.scope['url_route']['kwargs']['room_id']
         self.room_group_name = f'chat{self.room_id}'
 
@@ -17,7 +18,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         await self.accept()
 
-    async def disconnect(self, close_code):
+    async def disconnect(self):
         await self.channel_layer.group_discard(
             self.room_group_name,
             self.channel_name

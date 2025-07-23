@@ -82,6 +82,7 @@
     // Build WebSocket URL based on current location and room ID
     let protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
     let wsUrl = `${protocol}://${window.location.host}/ws/chat/{{ room.id }}/`;
+    console.log(wsUrl)
     const chatSocket = new WebSocket(wsUrl);
 
     chatSocket.onopen = () => {
