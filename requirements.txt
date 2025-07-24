@@ -1,7 +1,0 @@
-Django
-channels
-uvicorn[standard]
-pillow
-psycopg2-binary
-dj_database_url
-whitenoise
